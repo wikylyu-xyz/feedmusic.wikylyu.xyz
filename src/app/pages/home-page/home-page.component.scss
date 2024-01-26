@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+  app-toolbar {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 10000000;
+  }
+}

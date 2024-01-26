@@ -1,0 +1,47 @@
+:host {
+  display: block;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  video {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    transform: translateZ(0);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    width: 100%;
+    will-change: translate, opacity;
+  }
+  div.starwars {
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.6rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    max-height: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    height: 100%;
+    p {
+      color: white;
+      position: absolute;
+      top: 40%;
+      width: 100%;
+      left: 0px;
+      opacity: 0;
+      font-size: 2.4rem;
+      transition: all 0.3s ease-out;
+      a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+      }
+    }
+  }
+}
