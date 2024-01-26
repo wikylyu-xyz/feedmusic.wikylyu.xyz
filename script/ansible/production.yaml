@@ -1,0 +1,16 @@
+- hosts: localhost
+  tasks:
+    - name: build feedmusic.wikylyu.xyz
+      command: "{{item}}"
+      with_items:
+        - git checkout master
+        - ng build --configuration production
+      args:
+        chdir: "{{playbook_dir}}/../.."
+- hosts: wikylyu.xyz
+  user: wiky
+  tasks:
+    - name: deploy feedmusic.wikylyu.xyz
+      synchronize:
+        src: "{{playbook_dir}}/../../dist/feedmusic.wikylyu.xyz/browser/"
+        dest: /home/wiky/run/feedmusic.wikylyu.xyz/
