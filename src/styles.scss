@@ -107,6 +107,7 @@ $feedmusic_wikylyu_xyz-theme: mat.define-light-theme(
 html,
 body {
   height: 100%;
+  overscroll-behavior: none;
 }
 body {
   margin: 0;

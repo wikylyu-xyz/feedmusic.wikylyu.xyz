@@ -56,10 +56,30 @@ export class HomePageComponent {
   offset: number = 0;
   @HostListener("wheel", ["$event"])
   scroll(e: any) {
+    this.scrollUpdate(e.deltaY);
+  }
+
+  touchScreenY: number = -1;
+  @HostListener("touchend", ["$envet"])
+  @HostListener("touchstart", ["$event"])
+  @HostListener("touchmove", ["$event"])
+  touchmove(e: any) {
+    if (!e || !e.changedTouches) {
+      this.touchScreenY = -1;
+    } else if (this.touchScreenY < 0) {
+      this.touchScreenY = e.changedTouches[0].screenY;
+    } else {
+      const deltaY = (this.touchScreenY - e.changedTouches[0].screenY) * 2.4;
+      this.touchScreenY = e.changedTouches[0].screenY;
+      this.scrollUpdate(deltaY);
+    }
+  }
+
+  scrollUpdate(deltaY: number) {
     if (this.disabled) {
       return;
     }
-    this.offset += e.deltaY;
+    this.offset += deltaY;
     if (this.offset < 0) {
       this.offset = 0;
     }
