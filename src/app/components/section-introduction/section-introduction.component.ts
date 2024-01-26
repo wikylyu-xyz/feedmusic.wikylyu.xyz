@@ -13,7 +13,11 @@ import {
   ViewChildren,
 } from "@angular/core";
 import { ProgressService } from "../../services/progress.service";
-
+import {
+  BreakpointObserver,
+  BreakpointState,
+  Breakpoints,
+} from "@angular/cdk/layout";
 @Component({
   selector: "app-section-introduction",
   standalone: true,
@@ -27,7 +31,22 @@ export class SectionIntroductionComponent implements OnChanges, AfterViewInit {
   @ViewChild("starwars") starwars!: ElementRef;
   max: number = 6000.0;
 
-  constructor(private progress: ProgressService) {}
+  constructor(
+    private progress: ProgressService,
+    private breakpointObserver: BreakpointObserver
+  ) {
+    this.breakpointObserver
+      .observe([Breakpoints.Small, Breakpoints.Medium, Breakpoints.XSmall])
+      .subscribe((r) => {
+        if (r.matches) {
+          this.stepY = 60;
+          this.stepYAfter = 40;
+        } else {
+          this.stepY = 80;
+          this.stepYAfter = 60;
+        }
+      });
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.offset < 0) {
@@ -45,6 +64,7 @@ export class SectionIntroductionComponent implements OnChanges, AfterViewInit {
   }
 
   stepY = 80;
+  stepYAfter = 60;
   stepScale = 1.15;
   stepScaleAfter = 1.1;
   stepOpacity = 1 / 3;
@@ -80,7 +100,7 @@ export class SectionIntroductionComponent implements OnChanges, AfterViewInit {
     if (index + 1 < this.lines.length - 1) {
       for (let i = index + 1; i < this.lines.length; i++) {
         const translateY =
-          ((this.stepY * 4) / 5) * (i - index) - this.stepY * ratio;
+          this.stepYAfter * (i - index) - this.stepYAfter * ratio;
         const scale = Math.pow(1 / this.stepScaleAfter, i - index + 1 - ratio);
         const opacity =
           1 -

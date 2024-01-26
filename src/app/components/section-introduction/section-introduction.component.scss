@@ -19,7 +19,6 @@
     z-index: 100;
     display: flex;
     flex-direction: column;
-    font-size: 1.6rem;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -35,8 +34,16 @@
       width: 100%;
       left: 0px;
       opacity: 0;
-      font-size: 2.4rem;
+      font-size: 48px;
       transition: all 0.3s ease-out;
+      padding-left: 10px;
+      padding-right: 10px;
+      @media screen and (max-width: 600px) {
+        font-size: 22px;
+        &:last-child {
+          font-size: 2rem;
+        }
+      }
       a {
         text-decoration: none;
         color: white;
