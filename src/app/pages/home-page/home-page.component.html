@@ -1,3 +1,20 @@
-<app-toolbar></app-toolbar>
+<app-toolbar (sectionClicked)="onSectionClicked($event)"></app-toolbar>
 
-<app-section-introduction [offset]="offset"></app-section-introduction>
+@if(section===0){
+
+<app-section-introduction
+  [@introduction-show]
+  [offset]="offset"
+  (ended)="onSectionIntroductionEnded()"
+></app-section-introduction>
+
+} @else if (section===1) {
+<div
+  class="white"
+  [@white-show]
+  (@white-show.start)="disabled=true"
+  (@white-show.done)="disabled=false"
+></div>
+<div class="purple" [@purple-show]></div>
+<app-section-technology [@technology-show]></app-section-technology>
+}

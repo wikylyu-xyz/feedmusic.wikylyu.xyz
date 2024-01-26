@@ -1,18 +1,35 @@
-<a
+<a class="nav" (click)="sectionClicked.emit(0)"
   >Introducation
   <app-toolbar-progressbar
-    [progress]="progress.progress1()"
+    [progress]="progress.progress2()===0? progress.progress1():0"
   ></app-toolbar-progressbar>
 </a>
-<a
+<a class="nav" (click)="sectionClicked.emit(1)"
   >The Technology
-  <app-toolbar-progressbar [progress]="0"></app-toolbar-progressbar>
+  <app-toolbar-progressbar
+    [progress]="progress.progress2()"
+  ></app-toolbar-progressbar>
 </a>
-<a
+<a class="nav"
   >Tech Spotlight
   <app-toolbar-progressbar [progress]="0"></app-toolbar-progressbar>
 </a>
-<a
+<a class="nav"
   >Why Music?
   <app-toolbar-progressbar [progress]="0"></app-toolbar-progressbar>
+</a>
+
+<a
+  class="github"
+  mat-icon-button
+  href="https://github.com/wikylyu-xyz/feedmusic.wikylyu.xyz"
+  target="_blank"
+  aria-label="feedmusic github repository"
+>
+  <img
+    src="../../../assets/images/github-mark-white.png"
+    alt="github logo"
+    width="30"
+    height="30"
+  />
 </a>

@@ -29,6 +29,7 @@ export class SectionIntroductionComponent implements OnChanges, AfterViewInit {
   @Input() offset: number = 0;
   @ViewChildren("starline") lines!: QueryList<ElementRef>;
   @ViewChild("starwars") starwars!: ElementRef;
+  @Output() ended = new EventEmitter<boolean>();
   max: number = 6000.0;
 
   constructor(
@@ -40,10 +41,10 @@ export class SectionIntroductionComponent implements OnChanges, AfterViewInit {
       .subscribe((r) => {
         if (r.matches) {
           this.stepY = 60;
-          this.stepYAfter = 40;
+          this.stepYAfter = 50;
         } else {
           this.stepY = 80;
-          this.stepYAfter = 60;
+          this.stepYAfter = 70;
         }
       });
   }
@@ -77,6 +78,7 @@ export class SectionIntroductionComponent implements OnChanges, AfterViewInit {
     const index = Math.min(this.lines.length - 1, Math.floor(rate));
     if (index === this.lines.length - 1) {
       ratio = 0;
+      this.ended.emit(true);
     }
     this.progress.progress1.set(((index + 1) / this.lines.length) * 100);
     const opacity = 1 - this.stepOpacity * ratio;

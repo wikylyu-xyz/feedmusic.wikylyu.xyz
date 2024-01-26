@@ -6,12 +6,23 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-  a {
+  position: relative;
+  a.nav {
     text-transform: uppercase;
     font-size: 1.2rem;
     user-select: none;
     color: white;
     cursor: pointer;
     font-weight: lighter;
+    @media screen and (max-width: 900px) {
+      display: none;
+    }
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  a.github {
+    position: absolute;
+    right: 20px;
   }
 }

@@ -2,13 +2,36 @@
   display: block;
   height: 100%;
   width: 100%;
+  position: relative;
+  overflow: hidden;
   app-toolbar {
     position: fixed;
     left: 0px;
     top: 0px;
     z-index: 10000000;
-    @media screen and (max-width: 900px) {
-      display: none;
-    }
+  }
+  div.white {
+    z-index: 200;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: -100%;
+  }
+  div.purple {
+    z-index: 200;
+    background-color: #35017f;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: -100%;
+  }
+  app-section-technology {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 200;
   }
 }
