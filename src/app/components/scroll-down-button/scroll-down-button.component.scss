@@ -49,12 +49,14 @@
     overscroll-behavior: none;
     line-height: 17.15px;
   }
-  &:hover {
-    border-color: white;
-    background-color: white;
-    div.label {
-      transform: scale(1.2);
-      opacity: 0;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      border-color: white;
+      background-color: white;
+      div.label {
+        transform: scale(1.2);
+        opacity: 0;
+      }
     }
   }
 }
