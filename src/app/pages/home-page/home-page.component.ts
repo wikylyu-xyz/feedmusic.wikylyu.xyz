@@ -4,6 +4,7 @@ import { SectionIntroductionComponent } from "../../components/section-introduct
 import { SectionTechnologyComponent } from "../../components/section-technology/section-technology.component";
 import { animate, style, transition, trigger } from "@angular/animations";
 import { ProgressService } from "../../services/progress.service";
+import { ScrollDownButtonComponent } from "../../components/scroll-down-button/scroll-down-button.component";
 
 @Component({
   selector: "app-home-page",
@@ -12,6 +13,7 @@ import { ProgressService } from "../../services/progress.service";
     ToolbarComponent,
     SectionIntroductionComponent,
     SectionTechnologyComponent,
+    ScrollDownButtonComponent,
   ],
   templateUrl: "./home-page.component.html",
   styleUrl: "./home-page.component.scss",
@@ -107,15 +109,31 @@ export class HomePageComponent {
       return;
     }
     if (i === 0) {
-      this.section = 0;
-      this.progress.progress2.set(0);
-      this.sectionIntroductionEnded = 0;
-      this.offset = 0;
+      this.gotoSectionIntroduction();
     } else if (i === 1) {
-      this.section = 1;
-      this.sectionIntroductionEnded = 6000;
-      this.offset = 7000;
-      this.progress.progress2.set(100);
+      this.gotoSectionTechnology();
+    }
+  }
+
+  gotoSectionIntroduction() {
+    this.section = 0;
+    this.progress.progress2.set(0);
+    this.sectionIntroductionEnded = 0;
+    this.offset = 0;
+  }
+
+  gotoSectionTechnology() {
+    this.section = 1;
+    this.sectionIntroductionEnded = 6000;
+    this.offset = 6700;
+    this.progress.progress2.set(100);
+  }
+
+  next() {
+    if (this.section === 1) {
+      this.gotoSectionIntroduction();
+    } else {
+      this.gotoSectionTechnology();
     }
   }
 

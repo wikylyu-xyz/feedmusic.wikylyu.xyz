@@ -34,4 +34,11 @@
     top: 0px;
     z-index: 200;
   }
+  app-scroll-down-button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 25px;
+    z-index: 9999;
+  }
 }

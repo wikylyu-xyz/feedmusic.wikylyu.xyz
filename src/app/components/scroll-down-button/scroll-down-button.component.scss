@@ -1,0 +1,60 @@
+:host {
+  display: block;
+  cursor: pointer;
+  user-select: none;
+
+  width: 26px;
+  height: 44px;
+  border-radius: 100px;
+  border: solid 2px #ccc;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  div.dot {
+    width: 6px;
+    height: 6px;
+    background-color: #ccc;
+    border-radius: 4px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px;
+    // transition: all 1s ease-in-out;
+    animation: dotmove 2s;
+    animation-iteration-count: infinite;
+    @keyframes dotmove {
+      0% {
+        top: 10px;
+      }
+      50% {
+        top: 20px;
+      }
+      100% {
+        top: 10px;
+      }
+    }
+  }
+  div.label {
+    width: 200px;
+    text-transform: uppercase;
+    position: absolute;
+    color: #ccc;
+    max-lines: 1;
+    text-wrap: nowrap;
+    top: 20px;
+    left: -87px;
+    font-size: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    letter-spacing: 5px;
+    overscroll-behavior: none;
+    line-height: 17.15px;
+  }
+  &:hover {
+    border-color: white;
+    background-color: white;
+    div.label {
+      transform: scale(1.2);
+      opacity: 0;
+    }
+  }
+}

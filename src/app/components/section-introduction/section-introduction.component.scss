@@ -61,5 +61,8 @@
     width: 420px;
     z-index: 101;
     transition: all 0.25s ease-in-out;
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
   }
 }
