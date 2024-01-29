@@ -51,4 +51,15 @@
       }
     }
   }
+  div.intro-paragraph {
+    position: absolute;
+    font-size: 12px;
+    bottom: 0;
+    left: 0;
+    padding: 25px;
+    color: #fff;
+    width: 420px;
+    z-index: 101;
+    transition: all 0.25s ease-in-out;
+  }
 }
